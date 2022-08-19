@@ -1,0 +1,23 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "dummy application to manage a calendar",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gianlucanigro/calendar.git"
+  },
+  "author": "Gianluca Nigro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gianlucanigro/calendar/issues"
+  },
+  "homepage": "https://github.com/gianlucanigro/calendar#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}
