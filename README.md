@@ -14,7 +14,8 @@ CREATE TABLE customer (
 CREATE TABLE booking (
                                book_id INT NOT NULL AUTO_INCREMENT,
                                customer_id INT NOT NULL,
-                               date DATETIME,
+                               start DATETIME,
+                               end DATETIME,
                                PRIMARY KEY(book_id),
                                INDEX (customer_id),
                                FOREIGN KEY (customer_id)
