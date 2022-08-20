@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "25300dab-e3fb-4dc0-9684-7b620c22b0e7",
+		"name": "calendar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1472573"
+	},
+	"item": [
+		{
+			"name": "inserisce customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mario rossi\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "legge customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mario rossi\"\n}"
+				},
+				"url": {
+					"raw": "9localhost:3000/customer/18",
+					"host": [
+						"9localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancella customer",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mario rossi\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/customer/18",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifica customer",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mario rossi modificato\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/customer/19",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"19"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
