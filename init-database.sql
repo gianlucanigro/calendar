@@ -1,13 +1,15 @@
-CREATE DATABASE IF NOT EXISTS calendar;
+DROP DATABASE calendar;
 
-CREATE TABLE IF NOT EXISTS calendar.customers (
+CREATE DATABASE calendar;
+
+CREATE TABLE calendar.customers (
     customer_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     PRIMARY KEY (customer_id),
     INDEX (name)
 ) ENGINE = INNODB;
 
-CREATE TABLE IF NOT EXISTS calendar.booking (
+CREATE TABLE calendar.booking (
     book_id INT NOT NULL AUTO_INCREMENT,
     customer_id INT NOT NULL,
     start DATETIME,
