@@ -34,6 +34,7 @@ Dopo aver preparato l'ambiente lanciare l'applicazione con node app.js
 
 - inizializzazione del database con node init-database.js
 - collezione Postman per testare le chiamate
+- customer-cli.js: tool da linea di comando per manipolare la tabella customer
 
 ## TODO
 
