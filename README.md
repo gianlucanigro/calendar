@@ -35,6 +35,12 @@ Dopo aver preparato l'ambiente lanciare l'applicazione con node app.js
 - inizializzazione del database con node init-database.js
 - collezione Postman per testare le chiamate
 
+## TODO
+
+- usare un pool di connessione a mysql
+- CRUD tabella booking
+- autenticazione con apikey
+
 
 
 
