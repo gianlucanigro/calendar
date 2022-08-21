@@ -127,6 +127,14 @@ function getCustomer(customerId, res) {
 
 const mysql = require('mysql');
 
+// check db availability
+
+const checkDb = openDB();
+checkDb.connect(function (error) {
+    if (error) throw error;
+});
+checkDb.end();
+
 const express = require('express');
 
 const app = express();
