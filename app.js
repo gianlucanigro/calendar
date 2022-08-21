@@ -1,6 +1,9 @@
 "use strict";
 
-
+/**
+ * 
+ * @returns {mysql.Connection} 
+ */
 function openDB() {
     const connection = mysql.createConnection({
         host: 'localhost',
@@ -12,11 +15,20 @@ function openDB() {
     return connection;
 }
 
-function insertCustomer(conn, customerName, res) {
+/**
+ * 
+ * @param {string} customerName 
+ * @param {express.Response} res 
+ */
+function insertCustomer(customerName, res) {
+    const dbConn = openDB();
+    dbConn.connect();
     let query = "insert into customers(name) values('" + customerName + "')";
     console.log(query);
-    conn.query(query, function (error, results, fields) {
+    dbConn.query(query, function (error, results, fields) {
+        dbConn.end();
         if (error) throw error;
+
         console.log('Created customer with id ' + results.insertId);
         if (results.affectedRows == 0) {
             res.status(400).json({
@@ -32,10 +44,19 @@ function insertCustomer(conn, customerName, res) {
     });
 }
 
-function updateCustomer(conn, customerId, customerName, res) {
+/**
+ * 
+ * @param {int} customerId 
+ * @param {string} customerName 
+ * @param {express.Response} res 
+ */
+function updateCustomer(customerId, customerName, res) {
+    const dbConn = openDB();
+    dbConn.connect();
     let query = "update customers set name = '" + customerName + "' where customer_id = " + customerId;
     console.log(query);
-    conn.query(query, function (error, results, fields) {
+    dbConn.query(query, function (error, results, fields) {
+        dbConn.end();
         if (error) throw error;
         console.log('Affected rows ' + results.affectedRows);
         if (results.affectedRows == 0) {
@@ -52,10 +73,18 @@ function updateCustomer(conn, customerId, customerName, res) {
     });
 }
 
-function deleteCustomer(conn, customerId, res) {
+/**
+ * 
+ * @param {int} customerId 
+ * @param {express.Response} res 
+ */
+function deleteCustomer(customerId, res) {
+    const dbConn = openDB();
+    dbConn.connect();
     let query = "delete from customers where customer_id = " + customerId;
     console.log(query);
-    conn.query(query, function (error, results, fields) {
+    dbConn.query(query, function (error, results, fields) {
+        dbConn.end();
         if (error) throw error;
         console.log('Deleted customer with id ' + customerId);
         if (results.affectedRows == 0) {
@@ -72,10 +101,18 @@ function deleteCustomer(conn, customerId, res) {
     });
 }
 
-function getCustomer(conn, customerId, res) {
+/**
+ * 
+ * @param {int} customerId 
+ * @param {express.Response} res 
+ */
+function getCustomer(customerId, res) {
+    const dbConn = openDB();
+    dbConn.connect();
     let query = "select * from customers where customer_id = " + customerId;
     console.log(query);
-    conn.query(query, function (error, results, fields) {
+    dbConn.query(query, function (error, results, fields) {
+        dbConn.end;
         if (error) throw error;
         console.log('Read customer with id ' + customerId);
         if (results.length == 1) {
@@ -92,10 +129,6 @@ const mysql = require('mysql');
 
 const express = require('express');
 
-const connection = openDB();
-
-
-
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -105,24 +138,23 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 app.get('/customer/:id', function (req, res) {
-    getCustomer(connection, req.params.id, res);
+    getCustomer(req.params.id, res);
 });
 
 app.post('/customer', jsonParser, function (req, res) {
     console.log(req.body);
-    insertCustomer(connection, req.body.name, res);
+    insertCustomer(req.body.name, res);
 });
 
 app.patch('/customer/:id', jsonParser, function (req, res) {
     console.log(req.body);
-    updateCustomer(connection, req.params.id, req.body.name, res);
+    updateCustomer(req.params.id, req.body.name, res);
 });
 
 app.delete('/customer/:id', function (req, res) {
-    deleteCustomer(connection, req.params.id, res);
+    deleteCustomer(req.params.id, res);
 });
 
-connection.connect();
 app.listen(port);
 
 
