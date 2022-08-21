@@ -53,9 +53,10 @@
 					"raw": "{\n    \"name\":\"mario rossi\"\n}"
 				},
 				"url": {
-					"raw": "9localhost:3000/customer/18",
+					"raw": "http://localhost:3000/customer/18",
+					"protocol": "http",
 					"host": [
-						"9localhost"
+						"localhost"
 					],
 					"port": "3000",
 					"path": [
