@@ -26,15 +26,15 @@ dopo aver clonato il repository eseguire dalla radice del repo questi comandi in
 
 - npm install
 - docker-compose up -d
-- node init-database.js
+- node ./init-database/init-database.js
 
-Dopo aver preparato l'ambiente lanciare l'applicazione con node app.js
+Dopo aver preparato l'ambiente lanciare l'applicazione con node ./src/app.js
 
 ## utilities
 
-- inizializzazione del database con node init-database.js
+- inizializzazione del database con node ./init-database/init-database.js
 - collezione Postman per testare le chiamate
-- customer-cli.js: tool da linea di comando per manipolare la tabella customer
+- ./src/customer-cli.js: tool da linea di comando per manipolare la tabella customer
 
 ## TODO
 
