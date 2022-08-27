@@ -25,7 +25,7 @@ function insertCustomer (customerName, res) {
   dbConn.connect()
   const query = "insert into customers(name) values('" + customerName + "')"
   console.log(query)
-  dbConn.query(query, function (error, results, fields) {
+  dbConn.query(query, function (error, results) {
     dbConn.end()
     if (error) throw error
 
@@ -55,7 +55,7 @@ function updateCustomer (customerId, customerName, res) {
   dbConn.connect()
   const query = "update customers set name = '" + customerName + "' where customer_id = " + customerId
   console.log(query)
-  dbConn.query(query, function (error, results, fields) {
+  dbConn.query(query, function (error, results) {
     dbConn.end()
     if (error) throw error
     console.log('Affected rows ' + results.affectedRows)
@@ -83,7 +83,7 @@ function deleteCustomer (customerId, res) {
   dbConn.connect()
   const query = 'delete from customers where customer_id = ' + customerId
   console.log(query)
-  dbConn.query(query, function (error, results, fields) {
+  dbConn.query(query, function (error, results) {
     dbConn.end()
     if (error) throw error
     console.log('Deleted customer with id ' + customerId)
@@ -111,7 +111,7 @@ function getCustomer (customerId, res) {
   dbConn.connect()
   const query = 'select * from customers where customer_id = ' + customerId
   console.log(query)
-  dbConn.query(query, function (error, results, fields) {
+  dbConn.query(query, function (error, results) {
     dbConn.end()
     if (error) throw error
     console.log('Read customer with id ' + customerId)
