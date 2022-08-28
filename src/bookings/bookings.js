@@ -24,24 +24,15 @@ function insertBooking(booking, res) {
     dbConn.query(query, function (error, results) {
         dbConn.end()
         if (error) {
-            res.status(400).json({
-                status: 'KO',
-                message: 'Booking not created, invalid customerId'
-            })
+            res.status(400).json({                status: 'KO',                message: 'Booking not created, invalid customerId'            })
             return
         }
         console.log('Created booking with id ' + results.insertId)
         if (results.affectedRows === 0) {
-            res.status(400).json({
-                status: 'KO',
-                message: 'Booking not created'
-            })
+            res.status(400).json({                status: 'KO',                message: 'Booking not created'            })
         } else {
             res.json({
-                status: 'OK',
-                message: 'Booking created',
-                bookingId: results.insertId
-            })
+                status: 'OK',                message: 'Booking created',                bookingId: results.insertId            })
         }
     })
 }
@@ -54,17 +45,7 @@ function insertBooking(booking, res) {
  * @param {object} booking
  * @param {Express.Response} res
  */
-export function updateBooking(bookingId, booking, res) {
-
-    if (checkStartEnd(booking.start, booking.end) === false) {
-        res.status(400).json({ status: 'KO', message: 'Invalid date data' })
-        return
-    }
-    if (checkOverBooking(booking.start, booking.end) === false) {
-        console.log('Time interval already booke')
-        res.status(400).json({ status: 'KO', message: 'Time interval already booked' })
-        return
-    }
+function updateBooking(bookingId, booking, res) {
     const dbConn = db.openDB()
     dbConn.connect()
     const query = "update booking set customer_id = " + booking.customerId + ", start = '" + booking.start + "',end='" + booking.end + "' where book_id = " + bookingId
@@ -173,7 +154,7 @@ function checkStartEnd(startBooking, endBooking) {
  * @param {object} booking 
  * @param {Express.Response} res 
  * @param {string} operation 
- * @param {number} id 
+ * @param {number} id record in booking table, 0 for operation insert
  * check if the request create a overbooking
  */
 function checkOverBooking(booking, res, operation, id) {
@@ -181,7 +162,7 @@ function checkOverBooking(booking, res, operation, id) {
 
     const dbConn = db.openDB()
     dbConn.connect()
-    const query = "select * from booking where start <= '" + booking.start + "' and end >= '" + booking.end + "'";
+    const query = "select * from booking where start <= '" + booking.end + "' and end >= '" + booking.start + "'";
     console.log(query)
     dbConn.query(query, function (error, results) {
         dbConn.end()
@@ -196,6 +177,7 @@ function checkOverBooking(booking, res, operation, id) {
             } else {
                 updateBooking(id, booking, res)
             }
+            return
         } else {
             console.log(operation + ' failed - overbooking')
             res.status(400).json({ status: 'KO', message: operation + ' failed - overbooking' })

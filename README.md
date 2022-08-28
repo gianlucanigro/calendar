@@ -2,6 +2,8 @@
 
 mini API REST per gestire un calendario di appuntamenti
 
+*date di inizio e fine delle prenotazioni sono gestite nel formato MySql YYYY/MM/DD HH:mm:ss*
+
 ## Tabelle gestite:
 
 - customers
@@ -39,7 +41,6 @@ Dopo aver preparato l'ambiente lanciare l'applicazione con node ./src/app.js
 ## TODO
 
 - usare un pool di connessione a mysql
-- CRUD tabella booking
 - autenticazione con apikey
 
 

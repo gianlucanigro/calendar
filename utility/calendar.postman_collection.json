@@ -47,7 +47,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customerId\": 2,\n    \"start\": \"2022-09-01 09:00:00\",\n    \"end\": \"2022-09-01 12:00:00\"\n}"
+					"raw": "{\n    \"customerId\": 1,\n    \"start\": \"2022-09-01 12:30:00\",\n    \"end\": \"2022-09-01 14:00:00\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3000/booking",
@@ -111,18 +111,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"mario rossi\"\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3000/customer/18",
+					"raw": "http://localhost:3000/booking/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"customer",
-						"18"
+						"booking",
+						"6"
 					]
 				}
 			},
@@ -173,14 +173,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/booking/3",
+					"raw": "localhost:3000/booking/123",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"booking",
-						"3"
+						"123"
 					]
 				}
 			},
@@ -228,17 +228,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customerId\": 3,\n    \"start\": \"2022-09-02 12:15:00\",\n    \"end\": \"2022-09-02 13:00:00\"\n}"
+					"raw": "{\n    \"customerId\": 3,\n    \"start\": \"2022-09-05 08:15:00\",\n    \"end\": \"2022-09-05 09:00:00\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/booking/2",
+					"raw": "localhost:3000/booking/9",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"booking",
-						"2"
+						"9"
 					]
 				}
 			},
