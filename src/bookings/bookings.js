@@ -8,6 +8,12 @@ import * as db from "../database/database.js"
  */
 export function insertBooking(booking, res) {
     // TODO controllare date e sovrapposizioni con altre prenotazioni
+    if (checkStartEnd(booking.start, booking.end) === false) {
+        res.status(400).json({
+            status: 'KO',
+            message: 'Invalid date data'
+        })
+    }
     const dbConn = db.openDB()
     dbConn.connect()
     const query = "insert into booking(customer_id,start,end) values(" + booking.customerId + ",'" + booking.start + "','" + booking.end + "')"
@@ -29,6 +35,27 @@ export function insertBooking(booking, res) {
             })
         }
     })
+}
+
+function checkStartEnd(startBooking, endBooking) {
+    let check = Date.parse(startBooking)
+    if (isNaN(check)) {
+        return false
+    }
+    check = Date.parse(endBooking)
+    if (isNaN(check)) {
+        return false
+    }
+    let start = new Date(startBooking)
+    let end = new Date(endBooking)
+    if (end <= start) {
+        return false
+    }
+    let now = new Date();
+    if (start <= now || end <= now) {
+        return false
+    }
+    return true
 }
 
 /**
