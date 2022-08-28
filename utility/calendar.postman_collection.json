@@ -35,7 +35,68 @@
 			"response": []
 		},
 		{
+			"name": "inserisce booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 2,\n    \"start\": \"2022-09-01 09:00:00\",\n    \"end\": \"2022-09-01 12:00:00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/booking",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "legge customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/customer/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "legge booking",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -97,6 +158,35 @@
 			"response": []
 		},
 		{
+			"name": "cancella booking",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/booking/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"booking",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "modifica customer",
 			"request": {
 				"method": "PATCH",
@@ -109,7 +199,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"mario rossi modificato\"\n}"
+					"raw": "{\n    \"customerId\": 3,\n    \"start\": \"2022-09-02 12:15:00\",\n    \"end\": \"2022-09-02 13:00:00\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3000/customer/19",
@@ -120,6 +210,35 @@
 					"path": [
 						"customer",
 						"19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifica booking",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 3,\n    \"start\": \"2022-09-02 12:15:00\",\n    \"end\": \"2022-09-02 13:00:00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/booking/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"booking",
+						"2"
 					]
 				}
 			},

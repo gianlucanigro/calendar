@@ -24,7 +24,8 @@ export function insertBooking(booking, res) {
         } else {
             res.json({
                 status: 'OK',
-                message: 'Booking created'
+                message: 'Booking created',
+                bookingId: results.insertId
             })
         }
     })
@@ -40,7 +41,7 @@ export function updateBooking(bookingId, booking, res) {
     // TODO controllare sovrapposizioni e date
     const dbConn = db.openDB()
     dbConn.connect()
-    const query = "update booking set customer_id = " + booking.customerId + ", start = '" + booking.start + "',end='" + booking.end + "' where booking_id = " + bookingId
+    const query = "update booking set customer_id = " + booking.customerId + ", start = '" + booking.start + "',end='" + booking.end + "' where book_id = " + bookingId
     console.log(query)
     dbConn.query(query, function (error, results) {
         dbConn.end()
@@ -65,15 +66,15 @@ export function updateBooking(bookingId, booking, res) {
  * @param {int} bookingId
  * @param {express.Response} res
  */
-export function deleteCustomer(bookingId, res) {
+export function deleteBooking(bookingId, res) {
     const dbConn = db.openDB()
     dbConn.connect()
-    const query = 'delete from customers where booking_id = ' + bookingId
+    const query = 'delete from booking where book_id = ' + bookingId
     console.log(query)
     dbConn.query(query, function (error, results) {
         dbConn.end()
         if (error) throw error
-        console.log('Deleted customer with id ' + bookingId)
+        console.log('Deleted booking with id ' + bookingId)
         if (results.affectedRows === 0) {
             res.status(404).json({
                 status: 'OK',
@@ -96,7 +97,7 @@ export function deleteCustomer(bookingId, res) {
 export function getBooking(bookingId, res) {
     const dbConn = db.openDB()
     dbConn.connect()
-    const query = 'select * from booking where booking_id = ' + bookingId
+    const query = 'select * from booking where book_id = ' + bookingId
     console.log(query)
     dbConn.query(query, function (error, results) {
         dbConn.end()
