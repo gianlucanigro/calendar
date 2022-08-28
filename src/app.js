@@ -2,6 +2,8 @@
 
 import * as customers from "./customers/customers.js"
 
+import * as booking from "./bookings/bookings.js"
+
 import * as db from "./database/database.js"
 
 import express from 'express'
@@ -26,6 +28,8 @@ const port = process.env.PORT || 3000
 
 const jsonParser = bodyParser.json()
 
+// REST customers
+
 app.get('/customer/:id', function (req, res) {
   customers.getCustomer(req.params.id, res)
 })
@@ -43,5 +47,25 @@ app.patch('/customer/:id', jsonParser, function (req, res) {
 app.delete('/customer/:id', function (req, res) {
   customers.deleteCustomer(req.params.id, res)
 })
+
+// REST booking
+app.get('/booking/:id', function (req, res) {
+  booking.getBooking(req.params.id, res)
+})
+
+app.post('/booking', jsonParser, function (req, res) {
+  console.log(req.body)
+  booking.insertBooking(req.body, res)
+})
+
+app.patch('/booking/:id', jsonParser, function (req, res) {
+  console.log(req.body)
+  booking.updateBooking(req.params.id, req.body, res)
+})
+
+app.delete('/booking/:id', function (req, res) {
+  booking.deleteBooking(req.params.id, res)
+})
+
 
 app.listen(port)
