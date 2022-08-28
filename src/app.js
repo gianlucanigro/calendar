@@ -1,8 +1,12 @@
 'use strict'
 
-import * as customers from "./customers"
+import * as customers from "./customers/customers.js"
 
-import * as db from "./database"
+import * as db from "./database/database.js"
+
+import express from 'express'
+
+import bodyParser from 'bodyparser'
 
 
 // check db availability
@@ -13,13 +17,12 @@ checkDb.connect(function (error) {
 })
 checkDb.end()
 
-const express = require('express')
 
 const app = express()
 
 const port = process.env.PORT || 3000
 
-const bodyParser = require('body-parser')
+
 
 const jsonParser = bodyParser.json()
 

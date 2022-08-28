@@ -12,6 +12,7 @@
   },
   "author": "Gianluca Nigro",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/gianlucanigro/calendar/issues"
   },
