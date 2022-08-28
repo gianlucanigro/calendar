@@ -7,6 +7,13 @@ import * as db from "../database/database.js"
  * @param {express.Response} res
  */
  export function insertCustomer (customerName, res) {
+    // controllo che la stringa non sia vuota
+    if (customerName.length === 0) {
+      res.status(400).json({
+        status: 'KO',
+        message: 'Customer name invalid'
+      })
+    } 
     const dbConn = db.openDB()
     dbConn.connect()
     const query = "insert into customers(name) values('" + customerName + "')"

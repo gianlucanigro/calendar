@@ -6,7 +6,7 @@ import * as db from "./database/database.js"
 
 import express from 'express'
 
-import bodyParser from 'bodyparser'
+import bodyParser from 'body-parser'
 
 
 // check db availability
