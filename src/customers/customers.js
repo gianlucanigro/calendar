@@ -13,6 +13,7 @@ import * as db from "../database/database.js"
         status: 'KO',
         message: 'Customer name invalid'
       })
+      return
     } 
     const dbConn = db.openDB()
     dbConn.connect()
