@@ -55,12 +55,12 @@ app.get('/booking/:id', function (req, res) {
 
 app.post('/booking', jsonParser, function (req, res) {
   console.log(req.body)
-  booking.insertBooking(req.body, res)
+  booking.insertUpdateBooking(req.body, res, 'insert')
 })
 
 app.patch('/booking/:id', jsonParser, function (req, res) {
   console.log(req.body)
-  booking.updateBooking(req.params.id, req.body, res)
+  booking.insertUpdateBooking(req.body, res, 'update', req.params.id)
 })
 
 app.delete('/booking/:id', function (req, res) {
