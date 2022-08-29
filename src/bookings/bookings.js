@@ -153,7 +153,7 @@ function checkStartEnd(startBooking, endBooking) {
  * 
  * @param {object} booking 
  * @param {Express.Response} res 
- * @param {string} operation 
+ * @param {string} operation insert/update
  * @param {number} id record in booking table, 0 for operation insert
  * check if the request create a overbooking
  */
